@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
+
+  <PropertyGroup Label="SwaggerProps">
+    <SwaggerBuildDir>SwaggerBuild</SwaggerBuildDir>
+  </PropertyGroup>
+
+  <Target Name="GenerateSwaggerSpec" AfterTargets="Publish"
+          Condition= "$(ExeGenSwag) == 'True' and $(PublishDir) != ''">
+    <Message Text="### Executing Swashbuckle Swagger Spec. Generation over $(OutputPath)$(AssemblyName).dll ###" Importance="High" />
+    <MakeDir Directories="$(OutputPath)\\$(SwaggerBuildDir)\" Condition="!Exists('$(OutputPath)\\$(SwaggerBuildDir)')" />
+    <Exec Command="dotnet swagger tofile --output $(OutputPath)\$(SwaggerBuildDir) $(OutputPath)$(AssemblyName).dll v1.0" />
+    <Error Condition="Exists($(AssemblyName))" Text="The assembly file could not be found, please publish the version before generating client" />
+  </Target>
+
+  <Target Name="GenerateApiClients" AfterTargets="GenerateSwaggerSpec" DependsOnTargets="GenerateSwaggerSpec"
+        Condition= "$(ExeGenSwag) == 'True' and $(PublishDir) != ''">
+    <Message Text="### Executing NSwag Api Clients Generation ###" Importance="High" />
+    <Error Condition="Exists($(AssemblyName))" Text="The assembly file could not be found, please publish the version before generating client" />
+    <Exec Command="$(NSwagExe_Core20) swagger2csclient /input:$(OutputPath)\$(SwaggerBuildDir) /namespace:BasketManager.Swagger /InjectHttpClient:true /className:BasketManagerApiClient /UseHttpRequestMessageCreationMethod:true output:$(OutputPath)"/>
+  </Target>
+
+  <ItemGroup>
+    <ItemsToCopy Include="$(OutputPath)\\$(SwaggerBuildDir)\*.*" />
+  </ItemGroup>
+
+  <Target Name="CopyGeneratedCsClients" AfterTargets="Build" DependsOnTargets="GenerateApiClients"
+      Condition="$(GenerateClientsOnBuild) == 'True'
+          AND $(SwaggerClientsDir) != ''">
+    <Copy SourceFiles="@(ItemsToCopy)" DestinationFolder="$(SwaggerClientsDir)" />
+  </Target>
+
+</Project>
