@@ -4,7 +4,7 @@ using System;
 namespace BasketManager.Api.Client
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
-    public class WrapperAttribute : Attribute
+    internal class WrapperAttribute : Attribute
     {
         public ServiceLifetime ServiceLifetime { get; set; }
 

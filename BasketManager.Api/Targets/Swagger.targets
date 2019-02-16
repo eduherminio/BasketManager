@@ -26,7 +26,7 @@
 
   <Target Name="CopyGeneratedCsClients" AfterTargets="Build" DependsOnTargets="GenerateApiClients"
       Condition="$(GenerateClientsOnBuild) == 'True'">
-    <!--AND $(SwaggerClientsDir) != ''">-->
+    <Message Importance="high" Text="### Copying generated clients to $(SwaggerClientsDir)"></Message>
     <Copy SourceFiles="@(ItemsToCopy)" DestinationFolder="$(SwaggerClientsDir)" OverwriteReadOnlyFiles="true" />
   </Target>
 
