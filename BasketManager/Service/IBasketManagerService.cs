@@ -1,7 +1,5 @@
 ﻿using BasketManager.Model;
-using Configuration.Exceptions;
 using Configuration.Jwt;
-using Configuration.Logs;
 using System.Collections.Generic;
 
 namespace BasketManager.Service

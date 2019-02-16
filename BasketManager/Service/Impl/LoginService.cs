@@ -1,7 +1,6 @@
 ﻿using Configuration.Exceptions;
 using Configuration.Jwt;
 using Configuration.Logs;
-using Microsoft.Extensions.Logging;
 
 namespace BasketManager.Service.Impl
 {
@@ -11,7 +10,7 @@ namespace BasketManager.Service.Impl
     {
         private readonly IJwtManager _jwtManager;
 
-        public LoginService(IJwtManager jwtManager, ILogger<LoginService> logger)
+        public LoginService(IJwtManager jwtManager)
         {
             _jwtManager = jwtManager;
         }
