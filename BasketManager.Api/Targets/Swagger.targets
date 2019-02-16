@@ -17,7 +17,7 @@
         Condition= "$(ExeGenSwag) == 'True' and $(PublishDir) != ''">
     <Message Text="### Executing NSwag Api Clients Generation ###" Importance="High" />
     <Error Condition="Exists($(AssemblyName))" Text="The assembly file could not be found, please publish the version before generating client" />
-    <Exec Command="$(NSwagExe_Core20) swagger2csclient /input:$(SwaggerBuildDir)\$(AssemblyName).swagger.json /namespace:BasketManager.Swagger /InjectHttpClient:true /className:BasketManagerApiClient /UseHttpRequestMessageCreationMethod:true /output:$(SwaggerBuildDir)\\$(AssemblyName).cs"/>
+    <Exec Command="$(NSwagExe_Core20) swagger2csclient /input:$(SwaggerBuildDir)\$(AssemblyName).swagger.json /namespace:BasketManager.Api.Client.SwaggerClient /InjectHttpClient:true /className:BasketManagerClient /ClientBaseClass:SwaggerBaseClient /UseHttpRequestMessageCreationMethod:true /output:$(SwaggerBuildDir)\\BasketManagerClient.cs"/>
   </Target>
 
   <ItemGroup>
@@ -25,9 +25,9 @@
   </ItemGroup>
 
   <Target Name="CopyGeneratedCsClients" AfterTargets="Build" DependsOnTargets="GenerateApiClients"
-      Condition="$(GenerateClientsOnBuild) == 'True'
-          AND $(SwaggerClientsDir) != ''">
-    <Copy SourceFiles="@(ItemsToCopy)" DestinationFolder="$(SwaggerClientsDir)" />
+      Condition="$(GenerateClientsOnBuild) == 'True'">
+    <!--AND $(SwaggerClientsDir) != ''">-->
+    <Copy SourceFiles="@(ItemsToCopy)" DestinationFolder="$(SwaggerClientsDir)" OverwriteReadOnlyFiles="true" />
   </Target>
 
 </Project>

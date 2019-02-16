@@ -59,6 +59,7 @@ namespace Configuration.Jwt
             CheckUserInformation(payload.Username);
 
             session.Username = payload.Username;
+            session.Token = jwtManager.GetTokenFromAuthorizationHeader(authHeader);
 
             return session;
         }

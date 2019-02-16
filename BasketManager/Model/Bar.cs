@@ -2,6 +2,6 @@
 {
     public class Bar : Item
     {
-        public string FooDescription { get; set; }
+        public string BarDescription { get; set; }
     }
 }

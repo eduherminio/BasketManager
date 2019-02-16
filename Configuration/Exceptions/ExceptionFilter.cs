@@ -21,7 +21,7 @@ namespace Configuration.Exceptions
 
         public override void OnException(ExceptionContext context)
         {
-            Exception ex = ExceptionHelpers.GetInnerAspectInvocationException(context.Exception);
+            Exception ex = context.Exception.GetInnerAspectInvocationException();
 
             HttpExceptionResponseInfo info = Converter.GetMessageAndHttpCode(ex);
 

@@ -4,6 +4,8 @@
     {
         string Username { get; set; }
 
+        string Token { get; set; }
+
         bool IsAuthenticated();
     }
 }

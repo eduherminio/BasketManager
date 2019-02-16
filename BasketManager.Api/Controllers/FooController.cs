@@ -8,7 +8,7 @@ namespace BasketManager.Api.Controllers
     [JwtTokenRequired]
     [Produces("application/json")]
     [Route("api/foo")]
-    public class FooController : BaseItemController<Bar>
+    public class FooController : BaseItemController<Foo>
     {
         public FooController(IBasketManagerService basketManagerService) : base(basketManagerService) { }
     }
