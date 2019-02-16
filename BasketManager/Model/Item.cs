@@ -1,6 +1,6 @@
 ﻿namespace BasketManager.Model
 {
-    public abstract class Item
+    public class Item
     {
         public string Id { get; set; }
 

@@ -1,7 +1,6 @@
 ﻿using Configuration.Exceptions;
 using Microsoft.IdentityModel.Tokens;
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
@@ -12,7 +11,7 @@ namespace Configuration.Jwt
     public class JwtManager : IJwtManager
     {
         private readonly IJwtTokenGenerator _jwtTokenGenerator;
-        private readonly string _secret = Guid.NewGuid().ToString();
+        private readonly string _secret = "NotAValidSecretForSure";
 
         public JwtManager(IJwtTokenGenerator jwtTokenGenerator)
         {

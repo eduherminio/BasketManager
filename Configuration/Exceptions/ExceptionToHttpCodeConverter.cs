@@ -29,6 +29,7 @@ namespace Configuration.Exceptions
             AddValues(typeof(InvalidDataException), HttpStatusCode.BadRequest, "InvalidDataException");
             AddValues(typeof(InvalidOperationException), HttpStatusCode.BadRequest,
                 "InvalidOperationException");
+            AddValues(typeof(DatabaseException), HttpStatusCode.BadRequest, "DatabaseException");
         }
 
 

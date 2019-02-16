@@ -12,7 +12,7 @@ namespace BasketManager
         {
             services.AddScoped<IBasketManagerService, BasketManagerService>();
             services.AddScoped<ILoginService, LoginService>();
-            services.AddScoped<IItemDao, ItemDao>();
+            services.AddScoped<IItemDao, NotARealDao>();
             services.AddSingleton(new DatabaseFixture());
         }
     }

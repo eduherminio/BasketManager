@@ -5,12 +5,15 @@ using System.Collections.Generic;
 
 namespace BasketManager.Dao.Impl
 {
-    public class ItemDao : IItemDao
+    /// <summary>
+    /// Untested
+    /// </summary>
+    public class NotARealDao : IItemDao
     {
         private readonly ISession _session;
         private readonly DatabaseFixture _databaseFixture;
 
-        public ItemDao(ISession session, DatabaseFixture databaseFixture)
+        public NotARealDao(ISession session, DatabaseFixture databaseFixture)
         {
             _session = session;
             _databaseFixture = databaseFixture;
