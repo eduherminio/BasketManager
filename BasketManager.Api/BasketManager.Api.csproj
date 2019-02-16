@@ -47,4 +47,11 @@
     <DotNetCliToolReference Include="Swashbuckle.AspNetCore.Cli" Version="4.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="$(SwaggerBuildDir)\**" />
+    <Content Remove="$(SwaggerBuildDir)\**" />
+    <EmbeddedResource Remove="$(SwaggerBuildDir)\**" />
+    <None Remove="$(SwaggerBuildDir)\**" />
+  </ItemGroup>
+
 </Project>
