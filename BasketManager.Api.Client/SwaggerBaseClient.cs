@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace BasketManager.Api.Client
+namespace BasketManager.Api.Client.SwaggerClient
 {
     public abstract class SwaggerBaseClient
     {

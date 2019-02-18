@@ -28,7 +28,7 @@ namespace BasketManager.Api.Test
         public void Remove()
         {
             HttpClient client = _fixture.GetClient();
-            var foo = HttpHelper.Post(client, _barUri, new Foo(), out HttpStatusCode statusCode); ;
+            var foo = HttpHelper.Post(client, _barUri, new Foo(), out HttpStatusCode statusCode);
 
             object nullObject = null;
             statusCode = HttpHelper.Delete(client, $"{_barUri}/{foo.Id}", nullObject);

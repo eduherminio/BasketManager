@@ -32,7 +32,6 @@ namespace Configuration.Exceptions
             AddValues(typeof(DatabaseException), HttpStatusCode.BadRequest, "DatabaseException");
         }
 
-
         public HttpExceptionResponseInfo GetMessageAndHttpCode(Exception exc)
         {
             var values = GetValue(exc.GetType());
